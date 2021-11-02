@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "InputFlusher.h"
 
-
 int main(int argc, char* argv[])
 {
     printf("Bienvenido al Mundo Pokemon!\n");
