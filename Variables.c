@@ -76,6 +76,39 @@ Pokemon *agregarPokemon(Pokemon *listaPokemon6, char *nombre){
     return listaPokemon6;
 }
 
+typedef struct PokemonPC
+{
+    int hp;
+    char tipo;
+    char nivel;
+    struct PokemonPC *sig;
+    
+}PokemonPC;
+
+PokemonPC *listaPokemonPC(PokemonPC *ListaPokemonesPC){
+    ListaPokemonesPC = NULL;
+    return ListaPokemonesPC;
+}
+
+PokemonPC *agregarPokemonPC(PokemonPC *listaPokemonPC, char *nombre){
+    PokemonPC *nuevoPokemonPC, *auxiliarPokemonPC;
+    nuevoPokemonPC = (PokemonPC*)malloc(sizeof(PokemonPC));
+    nuevoPokemonPC ->tipo = nombre;
+    nuevoPokemonPC ->sig = NULL;
+    if (listaPokemonPC == NULL){
+        listaPokemonPC = nuevoPokemonPC;
+    }else{
+        auxiliarPokemonPC = listaPokemonPC;
+        while (auxiliarPokemonPC != NULL)
+        {
+            auxiliarPokemonPC ->sig;
+        }
+        auxiliarPokemonPC ->sig = nuevoPokemonPC;
+    }
+    return listaPokemonPC;
+}
+
+
 
 int main()
 {
