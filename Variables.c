@@ -12,19 +12,69 @@ Instalaciones - arreglo que guarda que elementos existen en la ciudad.
     2 - es 1 si hay un gimnasio, es 2 si el gimnasio esta bloqueado
     3 - es 1 si hay un centro de entrenamiento
     4 - es 1 si hay una guarida*/
-struct Ciudad
+typedef struct Ciudad
 {
     char id;
     char instalaciones[5];
     char guaridaEn;
-};
+    struct Ciudad *sig;
+}Ciudad;
 
-struct Pokemon
+Ciudad *listaCiudad(Ciudad *Lista){
+    Lista = NULL;
+    return Lista;
+}
+
+Ciudad *agregarCiudad(Ciudad *Lista, char *nombre){
+    Ciudad *nuevaCiudad, *auxiliarCiudad;
+    nuevaCiudad = (Ciudad*)malloc(sizeof(Ciudad));
+    nuevaCiudad->id = nombre;
+    nuevaCiudad->sig = NULL;
+    if (Lista == NULL){
+        Lista = nuevaCiudad;
+    }else{
+        auxiliarCiudad = Lista;
+        while (auxiliarCiudad != NULL)
+        {
+            auxiliarCiudad ->sig;
+            
+        }
+        auxiliarCiudad ->sig = nuevaCiudad;
+    }
+    return Lista;
+}
+
+typedef struct Pokemon
 {
     int hp;
     char tipo;
     char nivel;
-};
+    struct Pokemon *sig;
+    
+} Pokemon;
+
+Pokemon *listaPokemon6(Pokemon *ListaPokemones){
+    ListaPokemones = NULL;
+    return ListaPokemones;
+}
+
+Pokemon *agregarPokemon(Pokemon *listaPokemon6, char *nombre){
+    Pokemon *nuevoPokemon, *auxiliarPokemon;
+    nuevoPokemon = (Pokemon*)malloc(sizeof(Pokemon));
+    nuevoPokemon ->tipo = nombre;
+    nuevoPokemon ->sig = NULL;
+    if (listaPokemon6 == NULL){
+        listaPokemon6 = nuevoPokemon;
+    }else{
+        auxiliarPokemon = listaPokemon6;
+        while (auxiliarPokemon != NULL)
+        {
+            auxiliarPokemon ->sig;
+        }
+        auxiliarPokemon ->sig = nuevoPokemon;
+    }
+    return listaPokemon6;
+}
 
 
 int main()
