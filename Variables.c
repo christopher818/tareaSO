@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <sys/types.h>
 #include <time.h>
+#include "Variables.h"
 
 /* Estructura que representa a las ciudades del juego 
 id - Numero de la ciudad
@@ -22,6 +23,7 @@ typedef struct Ciudad
 
 Ciudad *listaCiudad(Ciudad *Lista){
     Lista = NULL;
+    Ciudad *cabeza;
     return Lista;
 }
 
@@ -55,6 +57,7 @@ typedef struct Pokemon
 
 Pokemon *listaPokemon6(Pokemon *ListaPokemones){
     ListaPokemones = NULL;
+    Pokemon *cabeza;
     return ListaPokemones;
 }
 
@@ -87,6 +90,7 @@ typedef struct PokemonPC
 
 PokemonPC *listaPokemonPC(PokemonPC *ListaPokemonesPC){
     ListaPokemonesPC = NULL;
+    PokemonPC *cabeza;
     return ListaPokemonesPC;
 }
 
