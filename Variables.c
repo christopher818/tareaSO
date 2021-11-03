@@ -18,7 +18,7 @@ typedef struct Ciudad
     char id;
     char instalaciones[5];
     char guaridaEn;
-    struct Ciudad *sig;
+    struct Ciudad *sig;Ciudad *cabeza;
 }Ciudad;
 
 Ciudad *listaCiudad(Ciudad *Lista){
@@ -27,10 +27,12 @@ Ciudad *listaCiudad(Ciudad *Lista){
     return Lista;
 }
 
-Ciudad *agregarCiudad(Ciudad *Lista, char *nombre){
+Ciudad *agregarCiudad(Ciudad *Lista){
     Ciudad *nuevaCiudad, *auxiliarCiudad;
     nuevaCiudad = (Ciudad*)malloc(sizeof(Ciudad));
-    nuevaCiudad->id = nombre;
+    strncpy(nuevaCiudad->id);
+    strncpy(nuevaCiudad->instalaciones,5);
+    strncpy(nuevaCiudad->guaridaEn);
     nuevaCiudad->sig = NULL;
     if (Lista == NULL){
         Lista = nuevaCiudad;
@@ -51,7 +53,7 @@ typedef struct Pokemon
     int hp;
     char tipo;
     char nivel;
-    struct Pokemon *sig;
+    struct Pokemon *sig; Pokemon *cabeza;
     
 } Pokemon;
 
@@ -61,10 +63,12 @@ Pokemon *listaPokemon6(Pokemon *ListaPokemones){
     return ListaPokemones;
 }
 
-Pokemon *agregarPokemon(Pokemon *listaPokemon6, char *nombre){
+Pokemon *agregarPokemon(Pokemon *listaPokemon6){
     Pokemon *nuevoPokemon, *auxiliarPokemon;
     nuevoPokemon = (Pokemon*)malloc(sizeof(Pokemon));
-    nuevoPokemon ->tipo = nombre;
+    strncpy(nuevoPokemon->hp);
+    strncpy(nuevoPokemon->tipo);
+    strncpy(nuevoPokemon->nivel);
     nuevoPokemon ->sig = NULL;
     if (listaPokemon6 == NULL){
         listaPokemon6 = nuevoPokemon;
@@ -84,7 +88,7 @@ typedef struct PokemonPC
     int hp;
     char tipo;
     char nivel;
-    struct PokemonPC *sig;
+    struct PokemonPC *sig;PokemonPC *cabeza;
     
 }PokemonPC;
 
@@ -94,10 +98,12 @@ PokemonPC *listaPokemonPC(PokemonPC *ListaPokemonesPC){
     return ListaPokemonesPC;
 }
 
-PokemonPC *agregarPokemonPC(PokemonPC *listaPokemonPC, char *nombre){
+PokemonPC *agregarPokemonPC(PokemonPC *listaPokemonPC){
     PokemonPC *nuevoPokemonPC, *auxiliarPokemonPC;
     nuevoPokemonPC = (PokemonPC*)malloc(sizeof(PokemonPC));
-    nuevoPokemonPC ->tipo = nombre;
+    strncpy(nuevoPokemonPC->hp);
+    strncpy(nuevoPokemonPC->nivel);
+    strncpy(nuevoPokemonPC->tipo);
     nuevoPokemonPC ->sig = NULL;
     if (listaPokemonPC == NULL){
         listaPokemonPC = nuevoPokemonPC;
@@ -110,6 +116,52 @@ PokemonPC *agregarPokemonPC(PokemonPC *listaPokemonPC, char *nombre){
         auxiliarPokemonPC ->sig = nuevoPokemonPC;
     }
     return listaPokemonPC;
+}
+
+void DestruirNodoPokemon6(Pokemon *listaPokemon6){
+    free(listaPokemon6);
+}
+
+void DestruirNodoPokemonPC(PokemonPC *listaPokemonPC){
+    free(listaPokemonPC);
+}
+
+void PonerPokemonPrimero(Pokemon *listaPokemon6, Pokemon *ListaPokemones){
+    Pokemon *nuevoPokemon = agregarPokemon(listaPokemon6);
+    nuevoPokemon->sig = listaPokemon6->cabeza;
+    listaPokemon6->cabeza = nuevoPokemon;
+}
+
+void PonerPokemonUltimo(Pokemon *listaPokemon6, Pokemon *ListaPokemones){
+    Pokemon *nuevoPokemon = agregarPokemon(listaPokemon6);
+    if(listaPokemon6->cabeza == NULL){
+        listaPokemon6->cabeza = nuevoPokemon;
+    }else{
+        Pokemon *puntero = listaPokemon6->cabeza;
+        while (puntero->sig)
+        {
+            puntero = puntero->sig;
+        }
+        puntero->sig = nuevoPokemon;
+    }
+
+}
+
+void ColocarPokemonDespuesDe(int n,Pokemon *listaPokemon6, Pokemon *ListaPokemones){
+    Pokemon *nuevoPokemon = agregarPokemon(listaPokemon6);
+    if(listaPokemon6->cabeza == NULL){
+        listaPokemon6->cabeza = nuevoPokemon;
+    }else{
+        Pokemon *puntero = listaPokemon6->cabeza;
+        int posicion = 0;
+        while (posicion < n && puntero->sig)
+        {
+            puntero = puntero->sig;
+            posicion++;
+        }
+        nuevoPokemon->sig = puntero->sig;
+        puntero->sig = nuevoPokemon;
+    }
 }
 
 
