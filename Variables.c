@@ -18,12 +18,13 @@ typedef struct Ciudad
     char id;
     char instalaciones[5];
     char guaridaEn;
-    struct Ciudad *sig;Ciudad *cabeza;
+    struct Ciudad *sig;Ciudad *cabeza; int longitud;
 }Ciudad;
 
 Ciudad *listaCiudad(Ciudad *Lista){
     Lista = NULL;
     Ciudad *cabeza;
+    int longitud;
     return Lista;
 }
 
@@ -53,13 +54,14 @@ typedef struct Pokemon
     int hp;
     char tipo;
     char nivel;
-    struct Pokemon *sig; Pokemon *cabeza;
+    struct Pokemon *sig; Pokemon *cabeza;int longitud;
     
 } Pokemon;
 
 Pokemon *listaPokemon6(Pokemon *ListaPokemones){
     ListaPokemones = NULL;
     Pokemon *cabeza;
+    int longitud;
     return ListaPokemones;
 }
 
@@ -88,13 +90,14 @@ typedef struct PokemonPC
     int hp;
     char tipo;
     char nivel;
-    struct PokemonPC *sig;PokemonPC *cabeza;
+    struct PokemonPC *sig;PokemonPC *cabeza;int longitud;
     
 }PokemonPC;
 
 PokemonPC *listaPokemonPC(PokemonPC *ListaPokemonesPC){
     ListaPokemonesPC = NULL;
     PokemonPC *cabeza;
+    int longitud;
     return ListaPokemonesPC;
 }
 
@@ -118,6 +121,9 @@ PokemonPC *agregarPokemonPC(PokemonPC *listaPokemonPC){
     return listaPokemonPC;
 }
 
+
+// Funciones para manejar las listas enlazadas 
+
 void DestruirNodoPokemon6(Pokemon *listaPokemon6){
     free(listaPokemon6);
 }
@@ -130,6 +136,7 @@ void PonerPokemonPrimero(Pokemon *listaPokemon6, Pokemon *ListaPokemones){
     Pokemon *nuevoPokemon = agregarPokemon(listaPokemon6);
     nuevoPokemon->sig = listaPokemon6->cabeza;
     listaPokemon6->cabeza = nuevoPokemon;
+    listaPokemon6->longitud++;
 }
 
 void PonerPokemonUltimo(Pokemon *listaPokemon6, Pokemon *ListaPokemones){
@@ -144,6 +151,7 @@ void PonerPokemonUltimo(Pokemon *listaPokemon6, Pokemon *ListaPokemones){
         }
         puntero->sig = nuevoPokemon;
     }
+    listaPokemon6->longitud++;
 
 }
 
@@ -162,6 +170,43 @@ void ColocarPokemonDespuesDe(int n,Pokemon *listaPokemon6, Pokemon *ListaPokemon
         nuevoPokemon->sig = puntero->sig;
         puntero->sig = nuevoPokemon;
     }
+    listaPokemon6->longitud++;
+}
+
+Pokemon *ObtenerPokemon(int n, Pokemon *listaPokemonPC){
+    if (listaPokemonPC->cabeza == NULL){
+        return NULL;
+    }else {
+        PokemonPC *puntero = listaPokemonPC->cabeza;
+        int posicion = 0;
+        while (posicion < n && puntero->sig)
+        {
+            puntero = puntero->sig;
+            posicion++;
+        }
+        if (posicion != n)
+        {
+            return NULL;
+        }else{
+            return &puntero->tipo;
+        }
+        
+    }
+}
+
+int ContarCiudad(Ciudad *Lista){
+    return Lista->longitud;
+    
+}
+
+int ContarPokemon6(Pokemon *Lista){
+    return Lista->longitud;
+    
+}
+
+int ContarPokemonPC(PokemonPC *Lista){
+    return Lista->longitud;
+    
 }
 
 
