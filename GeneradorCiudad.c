@@ -51,7 +51,7 @@ int bucleDeGeneradorDeCiudades(char random, char indice, char* instalacion[], ch
     }
 }
 
-int GenerarCiudades(struct Ciudad* Lista, char cantidadCiudades)
+int GenerarCiudades(Ciudad* Lista, char cantidadCiudades)
 {
     time_t seed;
     char random;
@@ -61,7 +61,7 @@ int GenerarCiudades(struct Ciudad* Lista, char cantidadCiudades)
     char i, j;
     for( i = 0; i < cantidadCiudades; i++)
     {
-        struct Ciudad* nueva = malloc(6);
+        Ciudad* nueva = malloc(sizeof(Ciudad));
 
         nueva->id = ++i;
         for(j = 0; j < 4; j++)

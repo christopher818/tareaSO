@@ -15,10 +15,10 @@ Instalaciones - arreglo que guarda que elementos existen en la ciudad.
     4 - es 1 si hay una guarida*/
 typedef struct Ciudad
 {
+    struct Ciudad *sig;Ciudad *cabeza; int longitud;
     char id;
     char instalaciones[5];
     char guaridaEn;
-    struct Ciudad *sig;Ciudad *cabeza; int longitud;
 }Ciudad;
 
 Ciudad *listaCiudad(Ciudad *Lista){
@@ -49,12 +49,13 @@ Ciudad *agregarCiudad(Ciudad *Lista, char id, char instalaciones[5], char guarid
     return Lista;
 }
 
+
 typedef struct Pokemon
 {
+    struct Pokemon *sig; Pokemon *cabeza;int longitud;
     int hp;
     char tipo;
     char nivel;
-    struct Pokemon *sig; Pokemon *cabeza;int longitud;
     
 } Pokemon;
 
