@@ -28,12 +28,12 @@ Ciudad *listaCiudad(Ciudad *Lista){
     return Lista;
 }
 
-Ciudad *agregarCiudad(Ciudad *Lista){
+Ciudad *agregarCiudad(Ciudad *Lista, char id, char instalaciones[5], char guaridaEn){
     Ciudad *nuevaCiudad, *auxiliarCiudad;
     nuevaCiudad = (Ciudad*)malloc(sizeof(Ciudad));
-    strncpy(nuevaCiudad->id);
-    strncpy(nuevaCiudad->instalaciones,5);
-    strncpy(nuevaCiudad->guaridaEn);
+    nuevaCiudad->id = id ;
+    nuevaCiudad->instalaciones[5] = instalaciones[5];
+    nuevaCiudad->guaridaEn = guaridaEn;
     nuevaCiudad->sig = NULL;
     if (Lista == NULL){
         Lista = nuevaCiudad;
@@ -65,12 +65,12 @@ Pokemon *listaPokemon6(Pokemon *ListaPokemones){
     return ListaPokemones;
 }
 
-Pokemon *agregarPokemon(Pokemon *listaPokemon6){
+Pokemon *agregarPokemon(Pokemon *listaPokemon6, int hp, char tipo, char nivel){
     Pokemon *nuevoPokemon, *auxiliarPokemon;
     nuevoPokemon = (Pokemon*)malloc(sizeof(Pokemon));
-    strncpy(nuevoPokemon->hp);
-    strncpy(nuevoPokemon->tipo);
-    strncpy(nuevoPokemon->nivel);
+    nuevoPokemon->hp = hp;
+    nuevoPokemon->tipo = tipo;
+    nuevoPokemon->nivel = nivel;
     nuevoPokemon ->sig = NULL;
     if (listaPokemon6 == NULL){
         listaPokemon6 = nuevoPokemon;
@@ -101,12 +101,12 @@ PokemonPC *listaPokemonPC(PokemonPC *ListaPokemonesPC){
     return ListaPokemonesPC;
 }
 
-PokemonPC *agregarPokemonPC(PokemonPC *listaPokemonPC){
+PokemonPC *agregarPokemonPC(PokemonPC *listaPokemonPC, int hp, char tipo, char nivel){
     PokemonPC *nuevoPokemonPC, *auxiliarPokemonPC;
     nuevoPokemonPC = (PokemonPC*)malloc(sizeof(PokemonPC));
-    strncpy(nuevoPokemonPC->hp);
-    strncpy(nuevoPokemonPC->nivel);
-    strncpy(nuevoPokemonPC->tipo);
+    nuevoPokemonPC->hp = hp;
+    nuevoPokemonPC->nivel = nivel;
+    nuevoPokemonPC->tipo = tipo;
     nuevoPokemonPC ->sig = NULL;
     if (listaPokemonPC == NULL){
         listaPokemonPC = nuevoPokemonPC;
@@ -132,15 +132,15 @@ void DestruirNodoPokemonPC(PokemonPC *listaPokemonPC){
     free(listaPokemonPC);
 }
 
-void PonerPokemonPrimero(Pokemon *listaPokemon6, Pokemon *ListaPokemones){
-    Pokemon *nuevoPokemon = agregarPokemon(listaPokemon6);
+void PonerPokemonPrimero(Pokemon *listaPokemon6, Pokemon *ListaPokemones, int hp, char tipo, char nivel){
+    Pokemon *nuevoPokemon = agregarPokemon(listaPokemon6, hp, tipo, nivel);
     nuevoPokemon->sig = listaPokemon6->cabeza;
     listaPokemon6->cabeza = nuevoPokemon;
     listaPokemon6->longitud++;
 }
 
-void PonerPokemonUltimo(Pokemon *listaPokemon6, Pokemon *ListaPokemones){
-    Pokemon *nuevoPokemon = agregarPokemon(listaPokemon6);
+void PonerPokemonUltimo(Pokemon *listaPokemon6,  int hp, char tipo, char nivel){
+    Pokemon *nuevoPokemon = agregarPokemon(listaPokemon6, hp, tipo, nivel);
     if(listaPokemon6->cabeza == NULL){
         listaPokemon6->cabeza = nuevoPokemon;
     }else{
@@ -155,8 +155,8 @@ void PonerPokemonUltimo(Pokemon *listaPokemon6, Pokemon *ListaPokemones){
 
 }
 
-void ColocarPokemonDespuesDe(int n,Pokemon *listaPokemon6, Pokemon *ListaPokemones){
-    Pokemon *nuevoPokemon = agregarPokemon(listaPokemon6);
+void ColocarPokemonDespuesDe(int n,Pokemon *listaPokemon6,  int hp, char tipo, char nivel){
+    Pokemon *nuevoPokemon = agregarPokemon(listaPokemon6, hp, tipo, nivel);
     if(listaPokemon6->cabeza == NULL){
         listaPokemon6->cabeza = nuevoPokemon;
     }else{
@@ -173,7 +173,7 @@ void ColocarPokemonDespuesDe(int n,Pokemon *listaPokemon6, Pokemon *ListaPokemon
     listaPokemon6->longitud++;
 }
 
-Pokemon *ObtenerPokemon(int n, Pokemon *listaPokemonPC){
+Pokemon *ObtenerPokemonPC(int n, Pokemon *listaPokemonPC){
     if (listaPokemonPC->cabeza == NULL){
         return NULL;
     }else {
@@ -194,21 +194,79 @@ Pokemon *ObtenerPokemon(int n, Pokemon *listaPokemonPC){
     }
 }
 
-int ContarCiudad(Ciudad *Lista){
-    return Lista->longitud;
+int ContarCiudad(Ciudad *listaCiudad){
+    return listaCiudad->longitud;
     
 }
 
-int ContarPokemon6(Pokemon *Lista){
-    return Lista->longitud;
+int ContarPokemon6(Pokemon *listaPokemon6){
+    return listaPokemon6->longitud;
     
 }
 
-int ContarPokemonPC(PokemonPC *Lista){
-    return Lista->longitud;
+int ContarPokemonPC(PokemonPC *listaPokemonPC){
+    return listaPokemonPC->longitud;
     
 }
 
+int EstavacioPokemon6(Pokemon *listaPokemon6){
+    return listaPokemon6->cabeza == NULL;
+}
+
+int EstavacioPokemonPC(Pokemon *listaPokemonPC){
+    return listaPokemonPC->cabeza == NULL;
+}
+
+void eliminarPrincipioPokemon6(Pokemon *listaPokemon6){
+    if (listaPokemon6->cabeza){
+        Pokemon *eliminado = listaPokemon6->cabeza;
+        listaPokemon6->cabeza = listaPokemon6->cabeza->sig;
+        DestruirNodoPokemon6(eliminado);
+        listaPokemon6->longitud--;
+    }
+}
+
+void eliminarUltimoPokemon6(Pokemon *listaPokemon6){
+    if (listaPokemon6->cabeza){
+        if (listaPokemon6->cabeza->sig){
+            Pokemon *puntero = listaPokemon6->cabeza;
+            while(puntero->sig->sig){
+                puntero = puntero->sig;
+            }
+            Pokemon *eliminado = puntero->sig;
+            puntero->sig = NULL;
+            DestruirNodoPokemon6(eliminado);
+            listaPokemon6->longitud--;
+        }else{
+            Pokemon *eliminado = listaPokemon6->cabeza;
+            listaPokemon6->cabeza = NULL;
+            DestruirNodoPokemon6(eliminado);
+            listaPokemon6->longitud--;
+        }
+    }
+}
+
+void eliminarPokemon(int n, Pokemon *listaPokemon6){
+    if (listaPokemon6->cabeza){
+        if (n == 0){
+            Pokemon *eliminado = listaPokemon6->cabeza;
+            listaPokemon6->cabeza = listaPokemon6->cabeza->sig;
+            DestruirNodoPokemon6(eliminado);
+            listaPokemon6->longitud--;
+        }else if(n < listaPokemon6->longitud){
+            Pokemon *puntero = listaPokemon6->cabeza;
+            int posicion = 0;
+            while (posicion < (n-1)){
+                puntero = puntero ->sig;
+                posicion++;
+            }
+            Pokemon *eliminado = puntero->sig;
+            puntero->sig = eliminado->sig;
+            DestruirNodoPokemon6(eliminado);
+            listaPokemon6->longitud--;
+        }
+    }
+}
 
 
 int main()
