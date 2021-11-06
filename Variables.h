@@ -10,9 +10,12 @@ Instalaciones - arreglo que guarda que elementos existen en la ciudad.
     2 - es 1 si hay un gimnasio, es 2 si el gimnasio esta bloqueado
     3 - es 1 si hay un centro de entrenamiento
     4 - es 1 si hay una guarida*/
-typedef struct Ciudad
+
+typedef struct CiudadStruct
 {
-    struct Ciudad *sig;Ciudad *cabeza;int longitud;
+    struct CiudadStruct *sig;
+    struct CiudadStruct *cabeza;
+    int longitud;
     char id;
     char instalaciones[5];
     char guaridaEn;
@@ -24,7 +27,9 @@ Ciudad *agregarCiudad(Ciudad *Lista, char id, char instalaciones[5], char guarid
 
 typedef struct Pokemon
 {
-    struct Pokemon *sig;Pokemon *cabeza;int longitud;
+    struct Pokemon *sig;
+    struct Pokemon *cabeza;
+    int longitud;
     int hp;
     char tipo;
     char nivel;
@@ -46,7 +51,9 @@ tipo- indica el tipo del pokemon:
 */
 typedef struct PokemonPC
 {
-    struct PokemonPC *sig;PokemonPC *cabeza;int longitud;
+    struct PokemonPC *sig;
+    struct PokemonPC *cabeza;
+    int longitud;
     int hp;
     char tipo;
     char nivel;    

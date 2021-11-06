@@ -9,6 +9,8 @@
 
 // Funcion que sirve para ejecutar las batallas Pokemon contra la computadora.
 
+int turno = 1;
+
 void BatallaPokemon(char NivelDeBatalla, char TipoDelPokemonBatalla){
     Pokemon *pokemonLucha = GenerarPokemon(0, NivelDeBatalla, TipoDelPokemonBatalla);
     Pokemon *pokemonJugador = pokemonEnJugador->cabeza;
@@ -16,7 +18,7 @@ void BatallaPokemon(char NivelDeBatalla, char TipoDelPokemonBatalla){
     printf("%d\n", pokemonJugador->hp);
     int daño; 
     int ataque;
-    int turno = 1;
+    
     printf("Opciones de Batalla\n");
     printf("1.- Luchar\n");
     printf("2.- Lanzar Pokeball\n");
@@ -44,12 +46,19 @@ void BatallaPokemon(char NivelDeBatalla, char TipoDelPokemonBatalla){
             break;
         case '2':
             /* Lanzar Pokeball */
+            printf("Atrapaste el Pokemon salvaje\n");
+            if (->longitud ){
+
+            }
             break;
         case '3':
             /* Cambiar Pokemon */
             break;
         case '4':
             /* Huir */
+
+            printf("Huiste de la Batalla\n");
+            exit(0);
             break;
     
         default:
@@ -73,5 +82,15 @@ void BatallaPokemon(char NivelDeBatalla, char TipoDelPokemonBatalla){
             printf("No coloco una opcion valida, intente de nuevo\n");
             break;
         }
+    }
+}
+
+void GanadorDeBatalla(){
+    if (turno == 1){
+        printf("%s Gano la partida \n", pokemonEnJugador->cabeza->tipo);
+        exit(0);
+    }else{
+        printf("Gano la partida el rival\n");
+        exit(0);
     }
 }

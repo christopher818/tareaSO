@@ -1,5 +1,5 @@
-main: main.o GeneradorCiudad.o InputFlusher.o PokemonMenu.o Variables.o Apagado.o batallaPokemon.o Escenas.o GeneradorPokemon.o Juegos.o PokemonMenu.o
-	cc main.o GeneradorCiudad.o InputFlusher.o PokemonMenu.o Variables.o Apagado.o batallaPokemon.o Escenas.o GeneradorPokemon.o Juegos.o PokemonMenu.o -o main
+main: main.o GeneradorCiudad.o InputFlusher.o PokemonMenu.o Variables.o Apagado.o batallaPokemon.o Escenas.o GeneradorPokemon.o Juego.o PokemonMenu.o
+	cc main.o GeneradorCiudad.o InputFlusher.o PokemonMenu.o Variables.o Apagado.o batallaPokemon.o Escenas.o GeneradorPokemon.o Juego.o PokemonMenu.o -o main
 
 main.o: main.c GeneradorCiudad.h InputFlusher.h PokemonMenu.h Variables.h
 	cc -c main.c 
@@ -24,7 +24,7 @@ Escenas.o: Escenas.c Escenas.h Variables.h
 GeneradorPokemon.o: GeneradorPokemon.c GeneradorPokemon.h Variables.h 
 	cc -c GeneradorPokemon.c
 
-Juegos.o: Juegos.c Juegos.h Variables.h 
-	cc -c Juegos.c
+Juego.o: Juego.c Juego.h Variables.h 
+	cc -c Juego.c
 
 #siempre debe haber una linea en blanco al final
