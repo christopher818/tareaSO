@@ -1,11 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-Pokemon* pokemonEnJugador;
-Ciudad* ciudades;
-Pokemon* pokemonEnPC;
-
-
 /* Estructura que representa a las ciudades del juego 
 id - Numero de la ciudad
 Instalaciones - arreglo que guarda que elementos existen en la ciudad.
@@ -105,3 +100,7 @@ void eliminarUltimoPokemonPC(Pokemon *listaPokemonPC);
 void eliminarPokemon(int n, Pokemon *listaPokemon6);
 
 void eliminarPokemonPC(int n, Pokemon *listaPokemonPC);
+
+Pokemon* pokemonEnJugador;
+Ciudad* ciudades;
+Pokemon* pokemonEnPC;
