@@ -2,4 +2,4 @@
 #include <stdio.h>
 #include <string.h>
 
-char EntradaDeComando(char* Entrada);
+char EntradaDeComando(char* entrada);

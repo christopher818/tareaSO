@@ -3,7 +3,7 @@
 #include <sys/time.h>
 #include "Variables.h"
 
-int bucleDeGeneradorDeCiudades(char random, char indice, char* instalacion[], char* cuentaGuaridas)
+int bucleDeGeneradorDeCiudades(char random, char indice, char* instalacion[], char* cuentaGimnasios, char maxGimnasios)
 {
     switch(indice)
     {
@@ -25,11 +25,11 @@ int bucleDeGeneradorDeCiudades(char random, char indice, char* instalacion[], ch
             
         //Gimnasio
         case 2:
-            if(random % 100 <= 75)
+            if(random % 100 <= 75 && cuentaGimnasios < maxGimnasios)
             {
                 //cerrado y desbloqueable con guarida
                 if(random % 100 <= 30)
-                    {*instalacion[2] = 2; *cuentaGuaridas++;}
+                    {*instalacion[2] = 2;}
                 //abierto
                 else                    
                     {*instalacion[2] = 1;}
@@ -51,12 +51,66 @@ int bucleDeGeneradorDeCiudades(char random, char indice, char* instalacion[], ch
     }
 }
 
-int GenerarCiudades(Ciudad* Lista, char cantidadCiudades)
+/* */
+int GenerarGimnasiosYGuaridas(Ciudad* Lista)
+{
+    Ciudad* ciudadAEvaluar = Lista->cabeza;
+
+    /* Se recorren todas las ciudades buscando las que tienen gimnasios bloquados.
+    Se guarda su direccion en "ciudadAEvaluar" y luego se recorren las demas ciudades para ver si se ponen
+    guaridas alli*/
+    while (0 == 0)
+    {
+        /*Si tiene una guarida bloqueada, se recorren las demas ciudades como "AplicarGuarida".
+        Si no tienen guarida y son una ciudad diferente, se lanza un dado a ver si se pone una guarida alli
+        Y si se pone una guarida, se guarda la id de la ciudad con ella en la ciudad en "ciudadAEvaluar"
+        y se rompe el bucle, si no, se continua hasta que se coloque la guarida*/
+        if(ciudadAEvaluar->instalaciones[2]==2);
+        {
+            Ciudad* AplicarGuarida = Lista->cabeza;
+            while( 0 == 0 )
+            {
+                time_t seed;
+                srand(time(NULL));
+                char random = rand();
+
+                if (random % 100 <= 25)
+                {
+                    AplicarGuarida->instalaciones[4] = 1;
+                    ciudadAEvaluar->guaridaEn = AplicarGuarida->id;
+                    break;
+                }
+                if((AplicarGuarida->instalaciones[4] == 1 || AplicarGuarida->id == ciudadAEvaluar->id)
+                && ciudadAEvaluar->sig != NULL)
+                {
+                    AplicarGuarida = ciudadAEvaluar->sig;
+                    continue;
+                }
+                if (ciudadAEvaluar->sig == NULL)
+                {
+                    AplicarGuarida = Lista->cabeza;
+                }
+            }
+        }
+
+        if(ciudadAEvaluar ->sig == NULL)
+        {
+            break;
+        }
+        else
+        {
+            ciudadAEvaluar = ciudadAEvaluar->sig;
+        }
+    }
+        
+    return 0;
+}
+
+int GenerarCiudades(Ciudad* Lista, char cantidadCiudades, char maximoGimnasios)
 {
     time_t seed;
     char random;
-    char cuentaGuaridas = 0;
-    srand(time(NULL));
+    char cuentaGimnasios = 0;
 
     char i, j;
     for( i = 0; i < cantidadCiudades; i++)
@@ -66,10 +120,13 @@ int GenerarCiudades(Ciudad* Lista, char cantidadCiudades)
         nueva->id = ++i;
         for(j = 0; j < 4; j++)
         {
+            srand(time(NULL));
             random = rand();
-            bucleDeGeneradorDeCiudades(random, j, nueva->instalaciones, &cuentaGuaridas);
+            bucleDeGeneradorDeCiudades(random, j, nueva->instalaciones, &cuentaGimnasios, maximoGimnasios);
         }
     }
+
+
     return 0;
 }
 

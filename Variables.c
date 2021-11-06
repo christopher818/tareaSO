@@ -16,6 +16,7 @@ Instalaciones - arreglo que guarda que elementos existen en la ciudad.
 typedef struct Ciudad
 {
     struct Ciudad *sig;Ciudad *cabeza; int longitud;
+
     char id;
     char instalaciones[5];
     char guaridaEn;
@@ -35,21 +36,30 @@ Ciudad *agregarCiudad(Ciudad *Lista, char id, char instalaciones[5], char guarid
     nuevaCiudad->instalaciones[5] = instalaciones[5];
     nuevaCiudad->guaridaEn = guaridaEn;
     nuevaCiudad->sig = NULL;
-    if (Lista == NULL){
-        Lista = nuevaCiudad;
+
+    if(Lista->cabeza == NULL){
+        Lista->cabeza = nuevaCiudad;
     }else{
-        auxiliarCiudad = Lista;
-        while (auxiliarCiudad != NULL)
+        Ciudad *puntero = Lista->cabeza;
+        while (puntero->sig != NULL)
         {
-            auxiliarCiudad ->sig;
-            
+            puntero = puntero->sig;
         }
-        auxiliarCiudad ->sig = nuevaCiudad;
+        puntero->sig = nuevaCiudad;
     }
+    Lista->longitud++;
     return Lista;
 }
 
+/*
+tipo- indica el tipo del pokemon:
+    1 - Tipo Fuego
+    2 - Tipo Agua
+    3 - Tipo Grama
+    4 - Tipo Volador
+    5 - Tipo roca
 
+*/
 typedef struct Pokemon
 {
     struct Pokemon *sig; Pokemon *cabeza;int longitud;

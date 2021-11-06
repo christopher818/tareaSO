@@ -4,15 +4,15 @@
 
 /*Funcion que sirve para tomar comandos en el juego.
 Si el jugador escribe "apagar", deber hacer una llamada a "exit()" y cerrar el juego.
-Entrada - Direccion de memoria para tomar la entrada del jugador.
+entrada - Direccion de memoria para tomar la entrada del jugador.
     -Si es "apagar", la funcion envia un mensaje de apagado y usa la funcion 'exit' para salir del programa.
     -Si no, la funcion retorna 0.
 */
-char EntradaDeComando(char* Entrada)
+char EntradaDeComando(char* entrada)
 {
-    scanf("%s", Entrada);
+    scanf("%s", entrada);
 
-    if(strcmp(Entrada, "apagar") == 0)
+    if(strcmp(entrada, "apagar") == 0)
     {
         printf("Apagando juego.\n");
         exit(0);
