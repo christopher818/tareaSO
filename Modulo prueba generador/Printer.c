@@ -4,6 +4,8 @@
 #include "Apagado.h"
 #include "GeneradorCiudad.h"
 #include "GeneradorPokemon.h"
+#include "Variables.h"
+
 
 int ImprimirCiudades(Ciudad* Lista)
 {

@@ -39,3 +39,4 @@ Pokemon* GenerarPokemon(int hp, char nivel, char tipoDelPokemon)
     nuevoPokemon ->sig = NULL;
     
     return nuevoPokemon;
+}
