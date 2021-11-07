@@ -136,8 +136,3 @@ int GenerarCiudades(Ciudad* Lista, char cantidadCiudades, char maximoGimnasios)
 }
 
 #endif
-
-int main()
-{
-    
-}

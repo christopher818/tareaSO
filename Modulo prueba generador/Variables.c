@@ -401,8 +401,3 @@ void eliminarPokemonPC(int n, Pokemon *listaPokemonPC){
 }
 
 #endif
-
-int main()
-{
-
-}
