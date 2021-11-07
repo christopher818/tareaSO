@@ -76,9 +76,9 @@ tipo- indica el tipo del pokemon:
 */
 void Luchar(Pokemon *pokemonLucha){
     int daño; 
-    int ataque;
+    int ataque = 1;
     int turno = 1;
-    while (turno =) {
+    while (ataque == 1) {
     if (turno == 1){
     switch (pokemonEnJugador->cabeza->tipo){
 
