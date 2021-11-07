@@ -1,11 +1,10 @@
+#ifndef variables_c
+#define variables_c
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/types.h>
 #include <time.h>
-#include "Variables.h"
-
-#ifndef variables_c
-#define variables_c
 
 /* Estructura que representa a las ciudades del juego 
 id - Numero de la ciudad
