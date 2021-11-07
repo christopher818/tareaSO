@@ -1,5 +1,5 @@
 Printer: Printer.o GeneradorCiudad.o  Variables.o Apagado.o GeneradorPokemon.o
-	cc Printer.o GeneradorCiudad.o Apagado.o Variables.o GeneradorPokemon.o -o Printer
+	cc Printer.o GeneradorCiudad.o Apagado.o GeneradorPokemon.o Variables.o -o Printer
 
 Printer.o: Printer.c GeneradorCiudad.h  Variables.h
 	cc -c Printer.c

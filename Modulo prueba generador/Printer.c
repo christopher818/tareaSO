@@ -41,7 +41,8 @@ int main(int argc, char* argv[])
     printf("Diga numero de ciudades");
     char* seleccion1;
     EntradaDeComando(seleccion1);
-    char selbuff1 = memccpy(selbuff1,seleccion1, 1, 1);
+    char selbuff1 = seleccion1[0];
+    //char selbuff1 = memccpy(seleccion1,seleccion1, 1, 1);
 
     printf("Diga numero de gimnasios maximo");
     char* seleccion2;
@@ -49,7 +50,8 @@ int main(int argc, char* argv[])
     do
     {
         EntradaDeComando(seleccion2);
-        selbuff2 = memccpy(selbuff2,seleccion2, 1, 1);
+        char selbuff2 = seleccion2[0];
+        //seleccion2 = memccpy(seleccion2,seleccion2, 1, 1);
 
         if (selbuff2 > selbuff1)
         {

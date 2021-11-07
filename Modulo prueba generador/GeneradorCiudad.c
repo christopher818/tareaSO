@@ -1,11 +1,13 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <sys/time.h>
+#include <time.h>
 #include "Variables.h"
+
+#ifndef generadorCiudad_c
+#define generadorCiudad_c
 
 int bucleDeGeneradorDeCiudades(char random, char indice, char* instalacion[], char* cuentaGimnasios, char maxGimnasios)
 {
-    *instalacion[4] = 0;
     switch(indice)
     {
         //Centro Pokemon
@@ -26,7 +28,7 @@ int bucleDeGeneradorDeCiudades(char random, char indice, char* instalacion[], ch
             
         //Gimnasio
         case 2:
-            if(random % 100 <= 75 && cuentaGimnasios < maxGimnasios)
+            if(random % 100 <= 75 && *cuentaGimnasios < maxGimnasios)
             {
                 //cerrado y desbloqueable con guarida
                 if(random % 100 <= 30)
@@ -123,13 +125,17 @@ int GenerarCiudades(Ciudad* Lista, char cantidadCiudades, char maximoGimnasios)
         {
             srand(time(NULL));
             random = rand();
-            bucleDeGeneradorDeCiudades(random, j, nueva->instalaciones, &cuentaGimnasios, maximoGimnasios);
+            char* auxPointer = nueva->instalaciones;
+            char** funcPointer = &auxPointer;
+            bucleDeGeneradorDeCiudades(random, j, funcPointer, &cuentaGimnasios, maximoGimnasios);
         }
     }
 
 
     return 0;
 }
+
+#endif
 
 int main()
 {

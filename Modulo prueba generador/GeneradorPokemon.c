@@ -3,6 +3,9 @@
 #include <sys/time.h>
 #include "Variables.h"
 
+#ifndef generadorPokemon_c
+#define generadorPokemon_c
+
 /*Funcion que genera un pokemon aleatorio para colocarlo al final de una lista;
 como al tomar el primer pokemon, al encontrar un pokemon salvaje, al entrar a un gimnasio, guarida, centro de entrenamiento o la Liga 
     Lista - apuntador a la Lista de pokemon que se va a añadir
@@ -40,3 +43,5 @@ Pokemon* GenerarPokemon(int hp, char nivel, char tipoDelPokemon)
     
     return nuevoPokemon;
 }
+
+#endif
