@@ -1,11 +1,10 @@
+#ifndef variables_c
+#define variables_c
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/types.h>
 #include <time.h>
-#include "Variables.h"
-
-#ifndef variables_c
-#define variables_c
 
 /* Estructura que representa a las ciudades del juego 
 id - Numero de la ciudad
@@ -104,10 +103,12 @@ Pokemon *agregarPokemon(Pokemon *listaPokemon6, int hp, char tipo, char nivel){
 
 typedef struct PokemonPC
 {
+    struct PokemonPC *sig;
+    struct PokemonPC *cabeza;
+    int longitud;
     int hp;
     char tipo;
     char nivel;
-    struct PokemonPC *sig;PokemonPC *cabeza;int longitud;
     
 }PokemonPC;
 
@@ -236,7 +237,7 @@ Pokemon *ObtenerPokemonPC(int n, Pokemon *listaPokemonPC){
     if (listaPokemonPC->cabeza == NULL){
         return NULL;
     }else {
-        PokemonPC *puntero = listaPokemonPC->cabeza;
+        struct PokemonPC *puntero = listaPokemonPC->cabeza;
         int posicion = 0;
         while (posicion < n && puntero->sig)
         {

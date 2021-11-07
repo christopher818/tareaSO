@@ -1,8 +1,9 @@
+#ifndef variables
+#define variables
+
 #include <stdlib.h>
 #include <stdio.h>
 
-#ifndef variables
-#define variables
 /* Estructura que representa a las ciudades del juego 
 id - Numero de la ciudad
 Instalaciones - arreglo que guarda que elementos existen en la ciudad.
