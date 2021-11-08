@@ -38,27 +38,30 @@ int main(int argc, char* argv[])
 {
     pokemonEnJugador = calloc(6,sizeof(Pokemon));
 
-    printf("Diga numero de ciudades");
-    char* seleccion1;
-    EntradaDeComando(seleccion1);
-    char selbuff1 = seleccion1[0];
-    //char selbuff1 = memccpy(seleccion1,seleccion1, 1, 1);
+    printf("Diga numero de ciudades ");
+    fflush(stdout);
+    char* seleccion = malloc(64);
+    EntradaDeComando(seleccion);
+    char selbuff1 = seleccion[0] - 48;
+    
+    printf("Diga numero de gimnasios maximo ");
+    fflush(stdout);
 
-    printf("Diga numero de gimnasios maximo");
-    char* seleccion2;
     char selbuff2;
-    do
-    {
-        EntradaDeComando(seleccion2);
-        char selbuff2 = seleccion2[0];
-        //seleccion2 = memccpy(seleccion2,seleccion2, 1, 1);
+    EntradaDeComando(seleccion);
+    selbuff2 = seleccion[0] - 48;
 
-        if (selbuff2 > selbuff1)
+    while(selbuff1 < selbuff2)
+    {
+        printf("ERROR: Deben ser menos gimnasios que ciudades!\n");
+        EntradaDeComando(seleccion);
+        selbuff2 = seleccion[0];
+
+        if (selbuff1 > selbuff2)
         {
             printf("ERROR: Deben ser menos gimnasios que ciudades!\n");
         }
-    } while(selbuff2 > selbuff1);
-
+    }
     GenerarCiudades(ciudades, selbuff1, selbuff2);
 
     agregarPokemon(pokemonEnJugador, 0, 1, 5);

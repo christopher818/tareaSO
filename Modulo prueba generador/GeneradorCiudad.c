@@ -114,10 +114,11 @@ int GenerarCiudades(Ciudad* Lista, char cantidadCiudades, char maximoGimnasios)
     time_t seed;
     char random;
     char cuentaGimnasios = 0;
-
+    printf("step2");
     char i, j;
     for( i = 0; i < cantidadCiudades; i++)
     {
+        printf("step2");
         Ciudad* nueva = malloc(sizeof(Ciudad));
 
         nueva->id = ++i;
@@ -125,7 +126,9 @@ int GenerarCiudades(Ciudad* Lista, char cantidadCiudades, char maximoGimnasios)
         {
             srand(time(NULL));
             random = rand();
+            printf("step3");
             char* auxPointer = nueva->instalaciones;
+            printf("step3");
             char** funcPointer = &auxPointer;
             bucleDeGeneradorDeCiudades(random, j, funcPointer, &cuentaGimnasios, maximoGimnasios);
         }
