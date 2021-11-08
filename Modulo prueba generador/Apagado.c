@@ -22,8 +22,10 @@ char EntradaDeComando(char* entrada)
         exit(0);
     }
     else
-    printf("returning;");
+    {
+        printf("returning;");
         return 0;
+    }
     
     return 1;
 }

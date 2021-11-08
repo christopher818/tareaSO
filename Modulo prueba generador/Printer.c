@@ -47,10 +47,13 @@ int main(int argc, char* argv[])
     
     printf("Diga numero de gimnasios maximo ");
     fflush(stdout);
-
     char selbuff2;
-    EntradaDeComando(seleccion);
-    selbuff2 = seleccion[0] - 48;
+
+char* seleccion2 = malloc(64);
+    printf("1");
+    EntradaDeComando(seleccion2);
+    printf("2");
+    selbuff2 = seleccion2[0] - 48;
     
     while(selbuff1 < selbuff2)
     {
