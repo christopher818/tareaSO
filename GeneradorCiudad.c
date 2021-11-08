@@ -1,7 +1,10 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <sys/time.h>
+#include <time.h>
 #include "Variables.h"
+
+#ifndef generadorCiudad_c
+#define generadorCiudad_c
 
 int bucleDeGeneradorDeCiudades(char random, char indice, char* instalacion[], char* cuentaGimnasios, char maxGimnasios)
 {
@@ -25,7 +28,7 @@ int bucleDeGeneradorDeCiudades(char random, char indice, char* instalacion[], ch
             
         //Gimnasio
         case 2:
-            if(random % 100 <= 75 && cuentaGimnasios < maxGimnasios)
+            if(random % 100 <= 75 && *cuentaGimnasios < maxGimnasios)
             {
                 //cerrado y desbloqueable con guarida
                 if(random % 100 <= 30)
@@ -108,13 +111,17 @@ int GenerarGimnasiosYGuaridas(Ciudad* Lista)
 
 int GenerarCiudades(Ciudad* Lista, char cantidadCiudades, char maximoGimnasios)
 {
+    printf("step2");
     time_t seed;
+    printf("step2");
     char random;
+    printf("step2");
     char cuentaGimnasios = 0;
-
+    printf("step2");
     char i, j;
     for( i = 0; i < cantidadCiudades; i++)
     {
+        printf("step2");
         Ciudad* nueva = malloc(sizeof(Ciudad));
 
         nueva->id = ++i;
@@ -122,7 +129,11 @@ int GenerarCiudades(Ciudad* Lista, char cantidadCiudades, char maximoGimnasios)
         {
             srand(time(NULL));
             random = rand();
-            bucleDeGeneradorDeCiudades(random, j, nueva->instalaciones, &cuentaGimnasios, maximoGimnasios);
+            printf("step3");
+            char* auxPointer = nueva->instalaciones;
+            printf("step3");
+            char** funcPointer = &auxPointer;
+            //bucleDeGeneradorDeCiudades(random, j, funcPointer, &cuentaGimnasios, maximoGimnasios);
         }
     }
 
@@ -130,7 +141,4 @@ int GenerarCiudades(Ciudad* Lista, char cantidadCiudades, char maximoGimnasios)
     return 0;
 }
 
-int main()
-{
-    
-}
+#endif

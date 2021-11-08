@@ -1,3 +1,6 @@
+#ifndef variables
+#define variables
+
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -111,3 +114,4 @@ void eliminarPokemonPC(int n, Pokemon *listaPokemonPC);
 Pokemon* pokemonEnJugador;
 Ciudad* ciudades;
 Pokemon* pokemonEnPC;
+#endif
