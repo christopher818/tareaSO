@@ -5,6 +5,7 @@
 #include "GeneradorCiudad.h"
 #include "GeneradorPokemon.h"
 #include "Variables.h"
+#include "InputFlusher.h"
 
 
 int ImprimirCiudades(Ciudad* Lista)
@@ -50,23 +51,22 @@ int main(int argc, char* argv[])
     char selbuff2;
     EntradaDeComando(seleccion);
     selbuff2 = seleccion[0] - 48;
-
+    
     while(selbuff1 < selbuff2)
     {
         printf("ERROR: Deben ser menos gimnasios que ciudades!\n");
         EntradaDeComando(seleccion);
         selbuff2 = seleccion[0];
-
-        if (selbuff1 > selbuff2)
-        {
-            printf("ERROR: Deben ser menos gimnasios que ciudades!\n");
-        }
-    }
+    } 
+    printf("step");
+    ciudades = calloc(selbuff1, sizeof(Ciudad));
+    printf("step");
     GenerarCiudades(ciudades, selbuff1, selbuff2);
-
+    printf("step");
     agregarPokemon(pokemonEnJugador, 0, 1, 5);
-
+    printf("step");
     ImprimirCiudades(ciudades);
+    printf("step");
     ImprimirPokemones(pokemonEnJugador);
     return 0;
 }

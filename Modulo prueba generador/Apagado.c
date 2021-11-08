@@ -11,14 +11,18 @@ entrada - Direccion de memoria para tomar la entrada del jugador.
 */
 char EntradaDeComando(char* entrada)
 {   
+    printf("Entry;");
     inputFlusher(entrada);
+    printf("a");
     scanf("%s", entrada);
+    printf("b");
     if(strcmp(entrada, "apagar") == 0)
     {
         printf("Apagando juego.\n");
         exit(0);
     }
     else
+    printf("returning;");
         return 0;
     
     return 1;

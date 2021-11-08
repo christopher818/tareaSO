@@ -111,8 +111,11 @@ int GenerarGimnasiosYGuaridas(Ciudad* Lista)
 
 int GenerarCiudades(Ciudad* Lista, char cantidadCiudades, char maximoGimnasios)
 {
+    printf("step2");
     time_t seed;
+    printf("step2");
     char random;
+    printf("step2");
     char cuentaGimnasios = 0;
     printf("step2");
     char i, j;
@@ -130,7 +133,7 @@ int GenerarCiudades(Ciudad* Lista, char cantidadCiudades, char maximoGimnasios)
             char* auxPointer = nueva->instalaciones;
             printf("step3");
             char** funcPointer = &auxPointer;
-            bucleDeGeneradorDeCiudades(random, j, funcPointer, &cuentaGimnasios, maximoGimnasios);
+            //bucleDeGeneradorDeCiudades(random, j, funcPointer, &cuentaGimnasios, maximoGimnasios);
         }
     }
 
